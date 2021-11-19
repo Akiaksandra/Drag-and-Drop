@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { Routes, Route, Link } from "react-router-dom";
+
+import { DnD } from "./components/DnD";
+import { DnDWithLibrary } from "./components/DndWithLibrary";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="header">
+        <Link to="/DnD" className="route-link">
+          Ссылка на страницу, где реализован Drag and Drop без библиотек
+        </Link>
+        <Link to="/DnDWithLibrary" className="route-link">
+          Ссылка на страницу, где Drag and Drop реализован с помощью библиотеки
+        </Link>
       </header>
+      <Routes>
+        <Route path="/DnD" element={<DnD />} />
+        <Route
+          path="/DnDWithLibrary"
+          element={
+            <DndProvider backend={HTML5Backend}>
+              <DnDWithLibrary />
+            </DndProvider>
+          }
+        />
+      </Routes>
     </div>
   );
 }
