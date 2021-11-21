@@ -8,8 +8,8 @@ export const DnD = () => {
 
   const dragOverHandler = (e) => {
     e.preventDefault();
-    if (e.target.className === 'board__item')
-    e.target.style.boxShadow = "0 4px 3px gray";
+    if (e.target.className === "board__item")
+      e.target.style.boxShadow = "0 4px 3px gray";
   };
 
   const dragLeaveHandler = (e) => {
@@ -40,6 +40,7 @@ export const DnD = () => {
   };
 
   const dropHandler = (e, board, item) => {
+    console.log(item);
     e.target.style.boxShadow = "none";
     e.stopPropagation();
     e.preventDefault();

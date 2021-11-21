@@ -2,18 +2,11 @@ import React from "react";
 import { useDrop } from "react-dnd";
 import { IDataItem } from "../models/models";
 
-interface IProps {
-  onDrop: (item: IDataItem, status: string) => void;
-  children: any;
-  status: string;
-}
-
-const Board: React.FC<IProps> = ({ onDrop, children, status }) => {
+const Board = ({ onDrop, children, board }) => {
   const [{ isOver }, dropRef] = useDrop({
     accept: "card",
-    drop: (item: IDataItem) => {
-      console.log("board");
-      onDrop(item, status);
+    drop: (item) => {
+      onDrop(item.item, item.board, board);
     },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
@@ -26,7 +19,7 @@ const Board: React.FC<IProps> = ({ onDrop, children, status }) => {
       ref={dropRef}
       style={isOver ? { border: "2px solid red" } : {}}
     >
-      <div className="board__title">{status}</div>
+      <div className="board__title">{board.title}</div>
       {children}
     </div>
   );
