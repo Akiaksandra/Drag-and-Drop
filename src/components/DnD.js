@@ -8,6 +8,7 @@ export const DnD = () => {
 
   const dragOverHandler = (e) => {
     e.preventDefault();
+    if (e.target.className === 'board__item')
     e.target.style.boxShadow = "0 4px 3px gray";
   };
 
