@@ -19,13 +19,13 @@ export const DnDWithLibrary = () => {
     if (!result.destination) return;
     const { source, destination } = result;
 
-    const sourceColumn = boards.find((el) => el.id === source.droppableId) || {
+    const sourceColumn = boards.find((el) => el?.id === source.droppableId) || {
       id: "",
       title: "",
       items: [],
     };
     const destColumn = boards.find(
-      (el) => el.id === destination.droppableId
+      (el) => el?.id === destination.droppableId
     ) || { id: "", title: "", items: [] };
     const sourceItems = [...sourceColumn.items];
     const destItems = [...destColumn.items];
@@ -39,10 +39,10 @@ export const DnDWithLibrary = () => {
 
     setBoards(
       boards.map((b) => {
-        if (b.id === source.droppableId) {
+        if (b?.id === source.droppableId) {
           return { ...sourceColumn, items: sourceItems };
         }
-        if (b.id === destination.droppableId) {
+        if (b?.id === destination.droppableId) {
           return { ...destColumn, items: destItems };
         }
         return b;
@@ -61,7 +61,7 @@ export const DnDWithLibrary = () => {
         <div className="boards__container">
           {boards.map((board) => {
             return (
-              <Droppable droppableId={String(board.id)} key={board.id}>
+              <Droppable droppableId={String(board?.id)} key={board?.id}>
                 {(provided, snapshot) => {
                   return (
                     <div
@@ -74,8 +74,8 @@ export const DnDWithLibrary = () => {
                       }
                       {...provided.droppableProps}
                     >
-                      <div className="board__title">{board.title}</div>
-                      {board.items.map((item, index) => (
+                      <div className="board__title">{board?.title}</div>
+                      {board?.items.map((item, index) => (
                         <Draggable
                           key={item.id}
                           draggableId={String(item.id)}

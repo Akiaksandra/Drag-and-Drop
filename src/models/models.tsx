@@ -1,4 +1,4 @@
-export type TData = IDataItem[];
+export type TData = Array<IDataItem | null>;
 
 export type TItem = { id: number | string; title: string };
 
