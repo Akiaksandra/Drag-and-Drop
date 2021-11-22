@@ -1,5 +1,3 @@
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
 import { Routes, Route, Link } from "react-router-dom";
 
 import { DnD } from "./components/DnD";
@@ -18,14 +16,7 @@ function App() {
       </header>
       <Routes>
         <Route path="/DnD" element={<DnD />} />
-        <Route
-          path="/DnDWithLibrary"
-          element={
-            <DndProvider backend={HTML5Backend}>
-              <DnDWithLibrary />
-            </DndProvider>
-          }
-        />
+        <Route path="/DnDWithLibrary" element={<DnDWithLibrary />} />
       </Routes>
     </div>
   );
